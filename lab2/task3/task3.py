@@ -2,7 +2,10 @@
 
 import argparse
 import math
+import os
 import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "task2"))
 
 from task2 import (BOS, EOS, NGramModel, load_corpus, split_sentences,
                    tokenize, ask_n)
@@ -80,7 +83,9 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description="Probability of a Romanian sentence")
     parser.add_argument("-n", type=int, help="order of the model (1, 2, 3, ...)")
     parser.add_argument("-s", "--sentence", help="sentence to score (otherwise interactive)")
-    parser.add_argument("--corpus", help="use this text file instead of the Wikipedia corpus")
+    _default_corpus = os.path.join(os.path.dirname(__file__), "..", "task2", "corpus_ro.txt")
+    parser.add_argument("--corpus", default=_default_corpus,
+                        help="use this text file instead of the Wikipedia corpus")
     parser.add_argument("--refresh", action="store_true", help="download the corpus again")
     args = parser.parse_args(argv)
 
