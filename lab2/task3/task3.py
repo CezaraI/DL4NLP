@@ -1,22 +1,4 @@
-"""Task 3: probability of a new Romanian sentence under the Task 2 N-gram model.
 
-Usage:
-    python task3.py                          # asks for N, then for sentences
-    python task3.py -n 3                     # trigram model, interactive
-    python task3.py -n 2 -s "Bucureștiul este capitala României."   # one sentence
-    python task3.py --corpus my_text.txt -n 2
-
-The corpus, tokenization (normalize + tokenize), <s>/</s> padding and the
-NGramModel come from task2.py, so the input sentence gets exactly the same
-preprocessing as the training data.
-
-    P(w1 ... wm) = prod_{i=1..m+1} P(w_i | w_{i-N+1} ... w_{i-1}),  w_{m+1} = </s>
-    log P        = sum_i log P(w_i | context_i)
-
-The conditional probabilities use add-one (Laplace) smoothing, otherwise any
-unseen n-gram would make the whole sentence probability 0 (and log 0 undefined).
-The unsmoothed MLE value is shown next to it for comparison.
-"""
 
 import argparse
 import math
