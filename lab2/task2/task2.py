@@ -75,8 +75,6 @@ def load_corpus(custom_path, refresh):
     return download_corpus()
 
 
-
-
 def normalize(text):
     return text.translate(DIACRITICS).lower()
 
